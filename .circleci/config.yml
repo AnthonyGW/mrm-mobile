@@ -205,21 +205,6 @@ jobs:
           path: ~/repo/app/build/reports/tests
           destination: reports
 
-      # Running UI tests
-      - run:
-          name: Running integration tests on apk build
-          command: |
-            echo y | sdkmanager "system-images;android-22;default;armeabi-v7a"
-            echo no | avdmanager create avd --force --name test --abi armeabi-v7a -k "system-images;android-22;default;armeabi-v7a"
-            echo y | emulator -avd test -no-window &
-            circle-android wait-for-boot
-            ./gradlew connectedAndroidTest
-
-      # Storing UI test reports
-      - store_artifacts:
-          path: ~/repo/app/build/outputs/androidTest-results
-          destination: reports
-
       # Sending notification
       - run:
           name: Notifying slack channel on succeed
