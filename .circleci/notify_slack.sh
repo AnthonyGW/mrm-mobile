@@ -75,7 +75,7 @@ declare_env_variables() {
         "{\"type\": \"button\", \"text\": \"Jacoco Test Report (Release)\", \"url\": \"${JACOCO_RELEASE_REPORT}\"}", \
     )"
 
-  elif [ "$CIRCLE_JOB" == 'test' ]; then
+  elif [ "$CIRCLE_JOB" == 'connected_test' ]; then
     MESSAGE_TEXT="Connected Test Phase Passed! :smiley:"
 
     # Sorting through the artifact urls to get only the integration test reports
