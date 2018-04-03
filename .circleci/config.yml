@@ -441,13 +441,15 @@ workflows:
               only: develop
       - deploy_staging_build:
           requires:
-            - test
+            - unit_test
+            - connected_test
           filters:
             branches:
               only: staging
       - deploy_production_build:
           requires:
-            - test
+            - unit_test
+            - connected_test
           filters:
             branches:
               only: master
