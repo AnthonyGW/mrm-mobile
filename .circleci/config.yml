@@ -232,7 +232,9 @@ jobs:
           command: |
             bash ~/repo/.circleci/notify_slack_fail.sh
     post:
-      - bash <(curl -s https://codecov.io/bash) -t "cf19a055-270f-4b5c-b7ca-0f78beac30b7"
+      - curl -s https://codecov.io/bash > .codecov
+      - chmod +x .codecov
+      - ./.codecov
 
   deploy_test_build:
     <<: *defaults
